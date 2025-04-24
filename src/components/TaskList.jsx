@@ -1,12 +1,16 @@
 import React from "react";
 import { Task } from "./Task";
 
-export const TaskList = () => {
+export const TaskList = ({ tasks, onDeleteTask }) => {
   return (
     <ul>
-      <Task />
-      <Task />
-      <Task />
+      {tasks.map((task) => (
+        <Task
+          key={task.id}
+          task={task}
+          onDelete={() => onDeleteTask(task.id)}
+        />
+      ))}
     </ul>
   );
 };
